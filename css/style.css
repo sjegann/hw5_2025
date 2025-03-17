@@ -1,3 +1,4 @@
+/* Step 1: Animate the logo on page load */
 @keyframes logoAnim {
     0% { width: 25px; opacity: 0; }
     100% { width: 475px; opacity: 1; }
@@ -7,6 +8,7 @@
     animation: logoAnim 5s ease-in-out;
 }
 
+/* Step 2: Set font and background */
 body {
     font-family: 'Poppins', serif;
     background-image: url('../images/concrete_seamless.png');
@@ -14,6 +16,7 @@ body {
     text-align: center;
 }
 
+/* Step 3: Center header elements */
 header {
     display: flex;
     flex-direction: column;
@@ -21,10 +24,12 @@ header {
     padding: 10px;
 }
 
+/* Step 4: Align paragraphs to the left */
 p {
     text-align: left;
 }
 
+/* Step 5: Navigation links should be centered */
 nav .nav_links {
     display: flex;
     flex-direction: column;
@@ -32,6 +37,7 @@ nav .nav_links {
     gap: 10px;
 }
 
+/* Step 6: Ensure visited links retain color */
 a:link, a:visited {
     color: black;
     text-decoration: none;
@@ -42,6 +48,7 @@ a:hover, a:focus {
     text-decoration: underline;
 }
 
+/* Step 7: Style card headers inside pricing cards */
 .card > header {
     background: #288088;
     border: 2px solid #45ADAD;
@@ -52,29 +59,34 @@ a:hover, a:focus {
     text-align: center;
 }
 
+/* Step 8: Ensure pricing cards are the same size */
 .card {
     display: flex;
     flex-direction: column;
-    flex-basis:450px; 
+    flex: 1 1 450px; 
     background: white;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+    justify-content: space-between;
 }
 
+/* Step 9: Style the pricing section */
 .pricing {
     display: flex;
     flex-direction: column;
     align-items: stretch;
 }
 
+/* Step 10: Style buttons inside pricing cards */
 .card button {
     background: #288080;
     color: white;
     border-radius: 10px;
     font-size: 1em;
-    margin-top: 15px;
+    margin-top: auto;
 }
 
+/* Step 11: Style the gallery section */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -85,18 +97,22 @@ a:hover, a:focus {
 
 .gallery img {
     width: 150px;
-    flex: 45%;
     border: 10px solid #50C7C7;
     margin: 10px;
+}
 
+/* Step 12: Adjust gallery layout for mobile */
+.gallery img {
+    flex:45%; /* Two per row */
 }
 
 .gallery img:nth-child(5) {
-    flex: 0 1 45%;
+    flex: 0 1 45%; /* Last image centered */
     display: flex;
     justify-content: center;
 }
 
+/* Step 13: Adjust layout for larger screens */
 @media (min-width: 900px) {
     body > header {
         position: fixed;
@@ -141,32 +157,46 @@ a:hover, a:focus {
     } 
 }
 
+/* Step 14: Disable animation for users who prefer reduced motion */
 @media (prefers-reduced-motion) {
     #logo {
         animation: none;
     }
 }
 
+/* Step 15-21: Print View Adjustments */
 @media print {
+    /* Step 15 & 16: Change font and remove background image */
     body {
         font-family: Arial, Helvetica;
         background-image: none;
     }
 
+    /* Step 17: Adjust navigation layout for print */
     nav .nav_links {
         flex-direction: row;
         justify-content: space-between;
     }
   
+    /* Step 18: Ensure pricing cards align at the bottom */
     .pricing {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         align-items: flex-end;
     }
     
+    /* Step 19: Adjust card styling for print */
     .card {
         border: 2px solid #45ADDD;
         flex-basis: 325px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 10px;
     }
-
+     
+    /* Step 20: Hide the gallery in print view */
     h2#gallery {
         display: none;
     }
@@ -175,7 +205,8 @@ a:hover, a:focus {
         display: none; 
     }
 
-    .card li:nth-child(2):after {
+    /* Step 21: Add Thumbs up emoji to second list item in print view */
+    .card li:nth-child(2)::after {
         content: "\1F44D";
         margin-left: 5px;
     }
